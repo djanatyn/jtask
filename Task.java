@@ -32,4 +32,16 @@ public class Task
     if (done) done = false;
     else done = true;
   }
+
+  public void describe()
+  {
+    String taskString;
+    if (done) {
+      System.out.print(task + " [X]");
+      if (!description.equals("")) System.out.println("  - " + description);
+    } else {
+      System.out.print(task + " [ ]");
+      if (!description.equals("")) System.out.println("  - " + description);
+    }
+  }
 }

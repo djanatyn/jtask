@@ -10,7 +10,24 @@ public class JTask
 {
   public static void list(List<Task> list)
   {
-    System.out.println("Listed");
+    Iterator it = list.iterator();
+    int i = 0;
+
+    while (it.hasNext()) {
+      System.out.print(i + ". ");
+      ((Task)it.next()).describe();
+    }
+  }
+
+  public static void help()
+  {
+    System.out.println("available commands:");
+    System.out.println("add    - adds a todo item");
+    System.out.println("remove - remove a todo item");
+    System.out.println("list   - list all items");
+    System.out.println("save   - save changes to file");
+    System.out.println("toggle - change status of item");
+    System.out.println("purge  - remove all completed tasks");
   }
 
   public static void saveList(List<Task> list) throws
@@ -55,21 +72,22 @@ public class JTask
     Boolean quit = false;
     Boolean saved = false;
     while (!quit) {
-      switch (Prompt.prompt())
+      switch (Prompt.prompt(saved))
 	{
 	case 0: 
 	  if (Prompt.quit(saved)) saveList(taskList);
 	  quit = true;
 	  break;
-	case 1: taskList.add(Prompt.add()); break;
-	case 2: taskList.remove(Prompt.remove(taskList)); break;
+	case 1: taskList.add(Prompt.add()); saved = false; break;
+	case 2: taskList.remove(Prompt.remove(taskList)); saved = false; break;
 	case 3: list(taskList); break;
 	case 4:
 	  saveList(taskList);
 	  saved = true;
 	  break;
-	case 5: taskList = Prompt.toggle(taskList); break;
+	case 5: taskList = Prompt.toggle(taskList); saved = false; break;
 	case 6: taskList = purgeItems(taskList); break;
+	case 7: System.out.println("Error - please enter a proper command");
 	}
     }
   }

@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 public class Prompt
 {
-  public static int prompt()
+  public static int prompt(Boolean saved)
   {
-    System.out.print("> ");
+    if (saved) System.out.print("> ");
+    else System.out.print("(unsaved changes) > ");
+
     Scanner input = new Scanner(System.in);
 
     String in = input.nextLine();
@@ -87,10 +89,5 @@ public class Prompt
       System.out.println("Added task!");
       return new Task(name, description, false);
     }
-  }
-
-  public static void list(List<Task> list)
-  {
-    System.out.println("listed stuff");
   }
 }
