@@ -27,4 +27,9 @@ public class Task
     return task;
   }
 
+  public void toggle()
+  {
+    if (done) done = false;
+    else done = true;
+  }
 }

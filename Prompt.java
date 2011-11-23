@@ -21,7 +21,7 @@ public class Prompt
     else return 7;
   }
   
-  public static List<Task> toggleItem(List<Task> list)
+  public static List<Task> remove(List<Task> list)
   {
     Scanner input = new Scanner(System.in);
     while (true) {
@@ -34,6 +34,22 @@ public class Prompt
 	System.out.println("Removed '" + (list.get(choice)).title() + "'.");
 	list.remove(choice);
 	return list;
+      } else System.out.println("Error - enter a value between 1 and " + list.size() + ".");
+    }
+  }
+
+  public static List<Task> toggle(List<Task> list)
+  {
+    Scanner input = new Scanner(System.in);
+    while (true) {
+      System.out.println("Which item?");
+      System.out.print("> ");
+      
+      int choice = input.nextInt();
+
+      if ((choice <= list.size()) && (choice > 0)) {
+	System.out.println("Toggled '" + (list.get(choice)).title() + "'.");
+	(list.get(choice)).toggle();
       } else System.out.println("Error - enter a value between 1 and " + list.size() + ".");
     }
   }
@@ -56,14 +72,21 @@ public class Prompt
 
   public static Task add()
   {
-    System.out.println("added task");
-    return new Task("sweep stairs","get rid of the dust",false);
-  }
+    Scanner input = new Scanner(System.in);
+    
+    while (true)
+    {
+      System.out.println("Name of task:");
+      System.out.print("> ");
+      String name = input.nextLine();
+      
+      System.out.println("Description: (leave blank for no description)");
+      System.out.print("> ");
+      String description = input.nextLine();
 
-  public static int remove(List<Task> list)
-  {
-    System.out.println("removed stuff");
-    return 0;
+      System.out.println("Added task!");
+      return new Task(name, description, false);
+    }
   }
 
   public static void list(List<Task> list)

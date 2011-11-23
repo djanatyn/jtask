@@ -23,11 +23,6 @@ public class JTask
     while (it.hasNext()) file.println(((Task)it.next()).toString());
   }
   
-  public static void toggleItem(List<Task> list)
-  {
-    
-  }
-
   public static List<Task> purgeItems(List<Task> list)
   {
     System.out.println("Purging completed tasks...");
@@ -73,7 +68,7 @@ public class JTask
 	  saveList(taskList);
 	  saved = true;
 	  break;
-	case 5: taskList = Prompt.toggleItem(taskList); break;
+	case 5: taskList = Prompt.toggle(taskList); break;
 	case 6: taskList = purgeItems(taskList); break;
 	}
     }
