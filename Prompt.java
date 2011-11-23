@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 public class Prompt
 {
+
+  /**
+   * prompt player for input
+   * @param saved whether or not the program has been saved after changes
+   **/
   public static int prompt(Boolean saved)
   {
     if (saved) System.out.print("> ");
@@ -24,6 +29,11 @@ public class Prompt
     else return 8;
   }
   
+  /**
+   * removes an item from a list
+   * @param list the list to remove an item from
+   * @return the list with item removed
+   **/
   public static List<Task> remove(List<Task> list)
   {
     Scanner input = new Scanner(System.in);
@@ -34,13 +44,18 @@ public class Prompt
       int choice = input.nextInt();
 
       if ((choice <= list.size()) && (choice >= 0)) {
-	System.out.println("Removed '" + (list.get(choice)).title() + "'.");
-	list.remove(choice);
-	return list;
+        System.out.println("Removed '" + (list.get(choice)).title() + "'.");
+        list.remove(choice);
+        return list;
       } else System.out.println("Error - enter a value between 0 and " + list.size() + ".");
     }
   }
 
+  /**
+   * toggles an item between completion and todo status
+   * @param list the list to toggle items in
+   * @return the list with items toggled
+   **/
   public static List<Task> toggle(List<Task> list)
   {
     Scanner input = new Scanner(System.in);
@@ -51,13 +66,18 @@ public class Prompt
       int choice = input.nextInt();
 
       if ((choice <= list.size()) && (choice >= 0)) {
-	System.out.println("Toggled '" + (list.get(choice)).title() + "'.");
-	(list.get(choice)).toggle();
-	return list;
+        System.out.println("Toggled '" + (list.get(choice)).title() + "'.");
+        (list.get(choice)).toggle();
+        return list;
       } else System.out.println("Error - enter a value between 0 and " + list.size() + ".");
     }
   }
 
+  /**
+   * quits the program, prompting the user to save if he/she hasn't already
+   * @param saved whether or not the changes have been saved
+   * @return whether or not to save before quitting
+   **/
   public static Boolean quit(Boolean saved)
   {
     Boolean done = false;
@@ -74,6 +94,10 @@ public class Prompt
     return false;
   }
 
+  /**
+   * returns a new task according to user input
+   * @return the task that the user specified
+   **/
   public static Task add()
   {
     Scanner input = new Scanner(System.in);
