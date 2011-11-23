@@ -11,8 +11,8 @@ public class Task
     date = myDate;
   }
   
-  public String getName()
+  public String toString()
   {
-    return task;
+    return (task + "\n" + date + "\n" + description + "\n");
   }
 }

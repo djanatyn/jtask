@@ -8,9 +8,14 @@ import java.util.ArrayList;
 
 public class JTask
 {
-  public static void saveList(List<Task> list)
+  public static void saveList(List<Task> list) throws
+    FileNotFoundException
   {
-    System.out.println("saved the file");
+    PrintWriter file = new PrintWriter("todo.txt");
+    
+    Task[] writeArray = list.toArray(new Task[list.size()]);
+
+    for (Task task : writeArray) file.println(task.toString());
   }
   
   public static void toggleItem(List<Task> list)
