@@ -26,35 +26,22 @@ public class JTask
     }
     
     System.out.println("todo list (type 'help' for commands)");
-
     Boolean quit = false;
-    Boolean saved = true;
+    Boolean saved = false;
     while (!quit) {
-      saved = false;
-      System.out.print("> ");
-      String in = input.nextLine();
-      if (in.equals("quit")) {
-	if (saved) quit = true;
-	else {
-	  Boolean done = false;
+      switch (Prompt.prompt())
+	{
+	case 0: 
+	  if (Prompt.quit(saved)) saveList(taskList);
 	  quit = true;
-	  while (!done) {
-	    System.out.println("Save before quitting? [Y/N/(C)ancel]");
-	    System.out.print("> ");
-	    in = input.nextLine();
-	    done = true;
-	    if (in.toLowerCase().equals("y")) System.out.println("Saving...");
-	    else if (in.toLowerCase().equals("n")) System.out.println("Quitting...");
-	    else if (in.toLowerCase().equals("c")) {
-	      System.out.println("Quit canceled.");
-	      quit = false;
-	    } else {
-	      System.out.println("Error - please enter Y, N, or C.");
-	      done = false;
-	    }
-	  }
+	  break;
+	case 1: taskList.add(Prompt.add()); break;
+	case 2: taskList.remove(Prompt.remove(taskList)); break;
+	case 3: Prompt.list(taskList); break;
+	case 4: saveList(taskList); break;
+	case 5: toggleItem(taskList); break;
+	case 6: purgeItems(taskList); break;
 	}
-      }
     }
   }
 }
