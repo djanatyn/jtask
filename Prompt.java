@@ -24,8 +24,9 @@ public class Prompt
   {
     Boolean done = false;
     if (saved) done = true;
+    System.out.println("File not saved. Save before quitting? [Y/N]");
     while (!done) {
-      System.out.println("File not saved. Save before quitting? [Y/N]");
+      System.out.print("> ");
       Scanner in = new Scanner(System.in);
       String choice = in.nextLine();
       if (choice.toLowerCase().equals("y")) return true;
@@ -38,7 +39,7 @@ public class Prompt
   public static Task add()
   {
     System.out.println("added task");
-    return new Task("sweep stairs",10,"get rid of the dust");
+    return new Task("sweep stairs","get rid of the dust",false);
   }
 
   public static int remove(List<Task> list)

@@ -1,18 +1,24 @@
 public class Task
 {
   private String task;
-  private int date;
   private String description;
+  private Boolean done;
   
-  public Task(String myTask, int myDate, String myDesc)
+  public Task(String myTask, String myDesc, Boolean myDone)
   {
     task = myTask;
     description = myDesc;
-    date = myDate;
+    done = myDone;
   }
   
   public String toString()
   {
-    return (task + "\n" + date + "\n" + description + "\n");
+    return (task + "\n" + description + "\n" + done + "\n");
+  }
+  
+  public Boolean complete()
+  {
+    if (done) return true;
+    return false;
   }
 }
