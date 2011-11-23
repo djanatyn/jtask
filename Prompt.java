@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Prompt
 {
@@ -30,5 +33,21 @@ public class Prompt
     }
     return false;
   }
+
+  public static Task add()
+  {
+    System.out.println("added task");
+    return new Task("sweep stairs",10,"get rid of the dust");
+  }
+
+  public static int remove(List<Task> list)
+  {
+    System.out.println("removed stuff");
+    return 0;
+  }
+
+  public static void list(List<Task> list)
+  {
+    System.out.println("listed stuff");
+  }
 }
-    

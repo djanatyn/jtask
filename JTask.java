@@ -8,6 +8,21 @@ import java.util.ArrayList;
 
 public class JTask
 {
+  public static void saveList(List<Task> list)
+  {
+    System.out.println("saved the file");
+  }
+  
+  public static void toggleItem(List<Task> list)
+  {
+    System.out.println("toggled items");
+  }
+
+  public static void purgeItems(List<Task> list)
+  {
+    System.out.println("purged items");
+  }
+
   public static void main(String[] args) throws
     FileNotFoundException
   {
