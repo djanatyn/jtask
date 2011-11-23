@@ -37,10 +37,10 @@ public class Task
   {
     String taskString;
     if (done) {
-      System.out.print(task + " [X]");
+      System.out.println(task + " [X]");
       if (!description.equals("")) System.out.println("  - " + description);
     } else {
-      System.out.print(task + " [ ]");
+      System.out.println(task + " [ ]");
       if (!description.equals("")) System.out.println("  - " + description);
     }
   }

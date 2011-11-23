@@ -18,9 +18,10 @@ public class Prompt
     if (in.equals("remove")) return 2;
     if (in.equals("list"))   return 3;
     if (in.equals("save"))   return 4;
-    if (in.equals("toggle"))  return 5;
+    if (in.equals("toggle")) return 5;
     if (in.equals("purge"))  return 6;
-    else return 7;
+    if (in.equals("help"))   return 7;
+    else return 8;
   }
   
   public static List<Task> remove(List<Task> list)
@@ -32,11 +33,11 @@ public class Prompt
     
       int choice = input.nextInt();
 
-      if ((choice < list.size()) && (choice > 0)) {
+      if ((choice <= list.size()) && (choice >= 0)) {
 	System.out.println("Removed '" + (list.get(choice)).title() + "'.");
 	list.remove(choice);
 	return list;
-      } else System.out.println("Error - enter a value between 1 and " + list.size() + ".");
+      } else System.out.println("Error - enter a value between 0 and " + list.size() + ".");
     }
   }
 
@@ -49,10 +50,11 @@ public class Prompt
       
       int choice = input.nextInt();
 
-      if ((choice <= list.size()) && (choice > 0)) {
+      if ((choice <= list.size()) && (choice >= 0)) {
 	System.out.println("Toggled '" + (list.get(choice)).title() + "'.");
 	(list.get(choice)).toggle();
-      } else System.out.println("Error - enter a value between 1 and " + list.size() + ".");
+	return list;
+      } else System.out.println("Error - enter a value between 0 and " + list.size() + ".");
     }
   }
 
@@ -60,7 +62,7 @@ public class Prompt
   {
     Boolean done = false;
     if (saved) done = true;
-    System.out.println("File not saved. Save before quitting? [Y/N]");
+    else System.out.println("File not saved. Save before quitting? [Y/N]");
     while (!done) {
       System.out.print("> ");
       Scanner in = new Scanner(System.in);

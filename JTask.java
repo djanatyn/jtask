@@ -16,6 +16,7 @@ public class JTask
     while (it.hasNext()) {
       System.out.print(i + ". ");
       ((Task)it.next()).describe();
+      i++;
     }
   }
 
@@ -38,14 +39,17 @@ public class JTask
     Iterator it = list.iterator();
 
     while (it.hasNext()) file.println(((Task)it.next()).toString());
+
+    file.close();
   }
   
   public static List<Task> purgeItems(List<Task> list)
   {
     System.out.println("Purging completed tasks...");
+
     Iterator it = list.iterator();
-    for (int i = 0; it.hasNext(); i++) {
-      Task task = (Task)it.next();
+    for (int i = 0; i <= list.size(); i++) {
+      Task task = list.get(i);
       if (task.complete()) list.remove(i);
     }
     return list;
@@ -67,10 +71,12 @@ public class JTask
       if (file.hasNextLine()) file.nextLine();
       taskList.add(new Task(task, description,done));
     }
+
+    file.close();
     
     System.out.println("todo list (type 'help' for commands)");
     Boolean quit = false;
-    Boolean saved = false;
+    Boolean saved = true;
     while (!quit) {
       switch (Prompt.prompt(saved))
 	{
@@ -87,7 +93,8 @@ public class JTask
 	  break;
 	case 5: taskList = Prompt.toggle(taskList); saved = false; break;
 	case 6: taskList = purgeItems(taskList); break;
-	case 7: System.out.println("Error - please enter a proper command");
+	case 7: help();
+	case 8: System.out.println("Error - please enter a proper command");
 	}
     }
   }
