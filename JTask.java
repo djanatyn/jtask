@@ -25,7 +25,7 @@ public class JTask
   
   public static void toggleItem(List<Task> list)
   {
-
+    
   }
 
   public static List<Task> purgeItems(List<Task> list)
@@ -73,7 +73,7 @@ public class JTask
 	  saveList(taskList);
 	  saved = true;
 	  break;
-	case 5: toggleItem(taskList); break;
+	case 5: taskList = Prompt.toggleItem(taskList); break;
 	case 6: taskList = purgeItems(taskList); break;
 	}
     }

@@ -21,4 +21,10 @@ public class Task
     if (done) return true;
     return false;
   }
+
+  public String title()
+  {
+    return task;
+  }
+
 }

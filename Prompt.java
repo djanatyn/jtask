@@ -20,6 +20,24 @@ public class Prompt
     if (in.equals("purge"))  return 6;
     else return 7;
   }
+  
+  public static List<Task> toggleItem(List<Task> list)
+  {
+    Scanner input = new Scanner(System.in);
+    while (true) {
+      System.out.println("Which entry?");
+      System.out.print("> ");
+    
+      int choice = input.nextInt();
+
+      if ((choice < list.size()) && (choice > 0)) {
+	System.out.println("Removed '" + (list.get(choice)).title() + "'.");
+	list.remove(choice);
+	return list;
+      } else System.out.println("Error - enter a value between 1 and " + list.size() + ".");
+    }
+  }
+
   public static Boolean quit(Boolean saved)
   {
     Boolean done = false;
