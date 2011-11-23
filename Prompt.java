@@ -14,19 +14,21 @@ public class Prompt
     if (in.equals("save"))   return 4;
     if (in.equals("togle"))  return 5;
     if (in.equals("purge"))  return 6;
+    else return 7;
   }
-  public static int quit(Boolean saved)
+  public static Boolean quit(Boolean saved)
   {
-    if (saved) return false;
-    else {
+    Boolean done = false;
+    if (saved) done = true;
+    while (!done) {
       System.out.println("File not saved. Save before quitting? [Y/N]");
       Scanner in = new Scanner(System.in);
       String choice = in.nextLine();
-      if (choice.toLowerCase.equals("y")) return true;
-      if (choice.toLowerCase.equals("n")) return false;
+      if (choice.toLowerCase().equals("y")) return true;
+      if (choice.toLowerCase().equals("n")) done = true;
       System.out.println("Error - please enter Y or N.");
-      quitGame(saved);
     }
+    return false;
   }
 }
     
